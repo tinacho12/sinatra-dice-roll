@@ -18,6 +18,7 @@ get("/giraffe") do
 end
 
 get("/dice/2/6") do
+=begin
   first_die = rand(1..6)
   second_die = rand(1..6)
   sum = first_die + second_die
@@ -25,10 +26,22 @@ get("/dice/2/6") do
   @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
 
   erb(:two_six)
+=end
+
+  @rolls = []
+
+  2.times do
+    die = rand(1..6)
+
+    @rolls.push(die)
+  end
+
+  erb(:two_six)
   
 end
 
 get("/dice/2/10") do
+=begin
   first_die = rand(1..10)
   second_die = rand(1..10)
   sum = first_die + second_die
@@ -36,19 +49,42 @@ get("/dice/2/10") do
   @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
 
   erb(:two_ten)
+=end
+
+@rolls = []
+
+  2.times do
+    die = rand(1..10)
+
+    @rolls.push(die)
+  end
+
+  erb(:two_ten)
 
 end
 
 get("/dice/1/20") do
-  die = rand(1..20)
+=begin
+  @die = rand(1..20)
 
-  @outcome = "You rolled a #{die}."
+  @outcome = "You rolled a #{@die}."
 
   erb(:one_twenty)
+=end
 
+@rolls = []
+
+  1.times do
+    die = rand(1..20)
+
+    @rolls.push(die)
+  end
+
+  erb(:one_twenty)
 end
 
 get("/dice/5/4") do
+=begin
   first_die = rand(1..4)
   second_die = rand(1..4)
   third_die = rand(1..4)
@@ -59,6 +95,28 @@ get("/dice/5/4") do
   @outcome = "You rolled a #{first_die}, #{second_die}, #{third_die}, #{fourth_die}, and #{fifth_die} for a total of #{sum}."
 
   erb(:five_four)
+=end
+  @rolls = []
+
+  5.times do
+    die = rand(1..4)
+
+    @rolls.push(die)
+  end
+
+  erb(:five_four)
+end
+
+get("/dice/100/6") do
+  @rolls = []
+
+  100.times do
+    die = rand(1..6)
+
+    @rolls.push(die)
+  end
+
+  erb(:one_hundred_six)
 
 end
 
